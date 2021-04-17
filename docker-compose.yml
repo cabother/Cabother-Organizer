@@ -1,0 +1,13 @@
+version: "3"
+services:
+  db_dev:
+    image: postgres:9.5.5
+    restart: always
+    environment:
+      - POSTGRES_DB=cabother-organizer
+      - POSTGRES_USER=cabother-organizer
+      - POSTGRES_PASSWORD=cabother-organizer
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
