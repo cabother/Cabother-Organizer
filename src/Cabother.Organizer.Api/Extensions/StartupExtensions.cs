@@ -1,3 +1,4 @@
+using Cabother.Organizer.Api.Filters;
 using Cabother.Organizer.Api.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,15 @@ namespace Cabother.Organizer.Api.Extensions
             services.AddSwaggerGenNewtonsoftSupport();
 
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+        }
+
+        /// <summary>
+        /// Adiciona os filtros para injeção de dependência
+        /// </summary>
+        /// <param name="services">Objeto para configuração da injeção de dependência</param>
+        public static void AddApiFilters(this IServiceCollection services)
+        {
+            services.AddScoped<ApplicationExceptionFilterAttribute>();
         }
 
         public static void UseDocumentations(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)

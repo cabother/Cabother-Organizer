@@ -22,6 +22,7 @@ namespace Cabother.Organizer.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApiFilters();
             services.AddMediator();
 
             services.AddControllers()
