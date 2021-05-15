@@ -5,9 +5,9 @@ using Cabother.Organizer.Application.Commands.Teams;
 
 namespace Cabother.Organizer.Api.AutoMappers
 {
-    public class TeamProfile : Profile
+    public class TeamApiProfile : Profile
     {
-        public TeamProfile()
+        public TeamApiProfile()
         {
             CreateMap<CreateTeamViewModelRequest, CreateTeamCommand>();
         }

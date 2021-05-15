@@ -1,5 +1,8 @@
+using AutoMapper;
+using Cabother.Organizer.Api.AutoMappers;
 using Cabother.Organizer.Api.Filters;
 using Cabother.Organizer.Api.Options;
+using Cabother.Organizer.Application.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -44,6 +47,20 @@ namespace Cabother.Organizer.Api.Extensions
         public static void AddApiFilters(this IServiceCollection services)
         {
             services.AddScoped<ApplicationExceptionFilterAttribute>();
+        }
+
+        public static void AddMappers(this IServiceCollection services)
+        {
+            var configuration = new MapperConfiguration(config =>
+            {
+                config.AddApplicationMappers();
+
+                config.AddProfile<TeamApiProfile>();
+                config.AddProfile<GenericApiProfile>();
+            });
+
+            services.AddSingleton<MapperConfiguration>(configuration);
+            services.AddTransient<IMapper>(provider => provider.GetRequiredService<MapperConfiguration>().CreateMapper());
         }
 
         public static void UseDocumentations(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
