@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cabother.Organizer.Api.Controllers.V1
 {
     [ApiController]
-    [ApiVersion("2")]
+    [ApiVersion("1")]
     [ApiExplorerSettings(GroupName = "v1")]
     [ServiceFilter(typeof(ApplicationExceptionFilterAttribute))]
     [Route("api/v{version:apiVersion}/teams")]
