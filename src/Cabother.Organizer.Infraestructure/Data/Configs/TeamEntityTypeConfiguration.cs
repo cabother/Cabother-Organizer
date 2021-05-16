@@ -9,7 +9,7 @@ namespace Cabother.Organizer.Infraestructure.Data.Configs
     {
         protected override void ConfigureEntity(EntityTypeBuilder<Team> builder)
         {
-            builder.ToTable("printer", OrganizerDbContext.Schema);
+            builder.ToTable("team", OrganizerDbContext.Schema);
 
             builder.Property(x => x.Name)
                 .HasColumnName("name")
@@ -23,12 +23,6 @@ namespace Cabother.Organizer.Infraestructure.Data.Configs
 
             builder.Property(x => x.Status)
                 .HasColumnName("status")
-                .IsRequired();
-
-            builder.Property<Guid>("type_id")
-                .IsRequired();
-
-            builder.Property<Guid>("branch_id")
                 .IsRequired();
 
             builder.HasIndex(x => x.Status);
