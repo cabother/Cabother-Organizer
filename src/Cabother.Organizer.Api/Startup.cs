@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Cabother.Organizer.Application.Extensions;
+using Cabother.Organizer.Infraestructure.Extensions;
+
 namespace Cabother.Organizer.Api
 {
     public class Startup
@@ -22,6 +24,9 @@ namespace Cabother.Organizer.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApiFilters();
+            services.AddOrganizerData(Configuration);
+            services.AddOrganizerDataProviders();
             services.AddApiFilters();
             services.AddMappers();
             services.AddMediator();
