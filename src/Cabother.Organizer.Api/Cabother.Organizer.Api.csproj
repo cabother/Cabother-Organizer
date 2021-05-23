@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cabother.Organizer.Application\Cabother.Organizer.Application.csproj" />
+    <ProjectReference Include="..\Cabother.Organizer.Infraestructure\Cabother.Organizer.Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>
