@@ -43,6 +43,7 @@ namespace Cabother.Organizer.Infraestructure.Extensions
 
         public static void AddOrganizerDataProviders(this IServiceCollection services)
         {
+            services.AddTransient<IInsertTeam, PostgresProvider>();
             services.AddTransient<IValidateTeamName, PostgresProvider>();
         }
 

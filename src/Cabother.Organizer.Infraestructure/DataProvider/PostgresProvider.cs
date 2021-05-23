@@ -18,6 +18,7 @@ namespace Cabother.Organizer.Infraestructure.DataProvider
     /// </summary>
     public sealed class PostgresProvider :
         IValidateTeamName,
+        IInsertTeam,
         IDisposable
     {
         private readonly OrganizerDbContext _context;
@@ -45,6 +46,29 @@ namespace Cabother.Organizer.Infraestructure.DataProvider
             var duplicateName = await _context.Teams.AnyAsync(x => x.Name.Equals(name), cancellationToken);
 
             return !duplicateName;
+        }
+
+        /// <summary>
+        /// Inclui um novo time no banco de dados 
+        /// </summary>
+        /// <param name="team">Nome do time a ser adicionado</param>
+        /// <param name="cancellationToken">Objeto para gestão das solicitações de cancelamento do processamento</param>
+        /// <returns>Retorna o time com as informações atualizadas após a inserção</returns>
+        async Task<Team> IInsertTeam.InsertTeamAsync(Team team, CancellationToken cancellationToken)
+        {
+            team.ThrowIfNull(nameof(team));
+
+            _logger.LogDebug("Inserindo no banco de dados time '{Team}'", team.ToString());
+
+            await _context.Teams.AddAsync(team, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
+
+            _logger.LogDebug("Time inserido no banco de dados: '{Team}'", team.ToString());
+
+            _context.Entry(team).State = EntityState.Detached;
+
+
+            return team;
         }
 
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
