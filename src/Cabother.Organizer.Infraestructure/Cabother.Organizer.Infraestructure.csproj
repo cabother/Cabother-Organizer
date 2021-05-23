@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Cabother.Exceptions" Version="1.0.7" />
+    <PackageReference Include="Cabother.Validations.Helpers" Version="1.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5">
       <PrivateAssets>all</PrivateAssets>
@@ -18,6 +20,11 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cabother.Organizer.Application\Cabother.Organizer.Application.csproj" />
+    <ProjectReference Include="..\Cabother.Organizer.Domain\Cabother.Organizer.Domain.csproj" />
   </ItemGroup>
 
 </Project>
