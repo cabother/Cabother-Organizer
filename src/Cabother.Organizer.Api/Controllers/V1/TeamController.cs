@@ -30,10 +30,10 @@ namespace Cabother.Organizer.Api.Controllers.V1
         }
 
         /// <summary>
-        /// Insere novas impressoras
+        /// Insere novos times
         /// </summary>
-        /// <param name="request">Objeto com as informações da impressora</param>
-        /// <returns>Retorna a impressora cadastrada</returns>
+        /// <param name="request">Objeto com as informações do time</param>
+        /// <returns>Retorna o time cadastrado</returns>
         [HttpPost(Name = "Create")]
         [SwaggerOperation(
             Summary = "Insere novos times",
